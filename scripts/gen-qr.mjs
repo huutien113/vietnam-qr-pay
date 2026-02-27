@@ -12,8 +12,8 @@ const { QRPay } = mod;
 const qrPay = QRPay.initVietQR({
   bankBin: "970407",
   bankNumber: "16249999999999",
-  amount: "10000",
-  purpose: "Chuyen tien thu code",
+  amount: "11300000",
+  purpose: "xin chao",
 });
 
 const content = qrPay.build();
