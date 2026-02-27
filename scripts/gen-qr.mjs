@@ -3,7 +3,7 @@ import QRCode from "qrcode";
 import { QRPay, BanksObject } from "vietnam-qr-pay";
 
 const qrPay = QRPay.initVietQR({
-  bankBin: BanksObject.tcb.bin,
+  bankBin: "970407",
   bankNumber: "16249999999999",
   amount: "10000",
   purpose: "Chuyen tien thu code",
