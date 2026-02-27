@@ -1,13 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { pathToFileURL } from "url";
-import QRCode from "qrcode";
+import { toSVG } from "qrto";
 
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 const entry = pkg.main;
 
 const mod = await import(pathToFileURL(path.resolve(entry)));
-const { QRPay, BanksObject } = mod;
+const { QRPay } = mod;
 
 const qrPay = QRPay.initVietQR({
   bankBin: "970407",
@@ -18,6 +18,6 @@ const qrPay = QRPay.initVietQR({
 
 const content = qrPay.build();
 fs.mkdirSync("artifacts", { recursive: true });
-await QRCode.toFile("artifacts/vietqr.png", content, { errorCorrectionLevel: "M" });
+fs.writeFileSync("artifacts/vietqr.svg", toSVG(content));
 
-console.log("Generated artifacts/vietqr.png");
+console.log("Generated artifacts/vietqr.svg");

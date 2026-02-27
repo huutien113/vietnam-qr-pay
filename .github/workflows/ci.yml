@@ -34,9 +34,6 @@ jobs:
 
       - name: Install deps
         run: yarn install --frozen-lockfile
-        
-      - name: Add qrcode (temp, no lockfile changes)
-        run: yarn add -D qrcode --no-lockfile
 
       - name: Lint
         run: yarn lint
@@ -54,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: qr-images
-          path: artifacts/*.png
+          path: artifacts/*.svg
