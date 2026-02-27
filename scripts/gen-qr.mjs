@@ -2,15 +2,14 @@ import fs from "fs";
 import QRCode from "qrcode";
 import { QRPay, BanksObject } from "vietnam-qr-pay";
 
-// Ví dụ VietQR động giống README
 const qrPay = QRPay.initVietQR({
-  bankBin: BanksObject.acb.bin,
-  bankNumber: "257678859",
+  bankBin: BanksObject.tcb.bin,
+  bankNumber: "16249999999999",
   amount: "10000",
-  purpose: "Chuyen tien",
+  purpose: "Chuyen tien thu code",
 });
 
-const content = qrPay.build(); // chuỗi EMV
+const content = qrPay.build(); //EMV
 
 fs.mkdirSync("artifacts", { recursive: true });
 await QRCode.toFile("artifacts/vietqr.png", content, { errorCorrectionLevel: "M" });
