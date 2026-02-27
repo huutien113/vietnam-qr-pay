@@ -46,9 +46,15 @@ jobs:
         
       - name: Generate QR PNG
         run: node scripts/gen-qr.mjs
+        
+      - name: Install sharp (temp)
+        run: yarn add -D sharp --no-lockfile
+
+      - name: Convert SVG to PNG
+        run: node scripts/svg-to-png.mjs
 
       - name: Upload QR artifact
         uses: actions/upload-artifact@v4
         with:
           name: qr-images
-          path: artifacts/*.svg
+          path: artifacts/*.png
